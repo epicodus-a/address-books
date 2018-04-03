@@ -18,27 +18,31 @@
 		<h3 class="text-uppercase text-center my-5">enter your info</h3>
 		<div class="col-12">
 			<div class="form-group">
-				<input type="text" class="form-control" name="firstname" placeholder="please enter yoru firstname: ">
+				<input type="text" class="form-control firstname" placeholder="firstname" required>
 			</div>
 		</div>
 		<div class="col-12">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="please enter yoru lastname: " name="lastname">
+				<input type="text" class="form-control lastname" placeholder="lastname " required>
 			</div>
 		</div>
-		<div class="col-12">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="please enter yoru street: " name="street">
-			</div>
-		</div>
-		<div class="col-12">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="please enter yoru city: ">
-			</div>
-		</div>
-		<div class="col-12">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="please enter yoru state: ">
+		<div id="new-address">
+			<div class="new-address">
+				<div class="col-12">
+					<div class="form-group">
+						<input type="text" class="form-control street" placeholder="street" required>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="form-group">
+						<input type="text" class="form-control city" placeholder=" city" required>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="form-group">
+						<input type="text" class="form-control state" placeholder="state" required>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -48,27 +52,26 @@
 	</form>
 
 	<div class="another-address text-center">
-		<button type="submit" class="btn btn-danger form-control">Add Another Address</button>
+		<button class="btn btn-danger form-control add-address">Add Another Address</button>
 	</div>
 
-	<div class="row">
+	<div class="row mt-4">
 		<div class="col-12">
 			<div class="fullname">
 
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-12 text-center my-5">
+	<div class="row my-5">
+		<div class="col-12 text-center">
 			<button type="button" id="reset" class="btn btn-warning form-control">reset</button>
-
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-12">
 			<div class="detail">
-				<p id="1"></p>
+
 			</div>
 		</div>
 	</div>
