@@ -1,6 +1,3 @@
-// get userinput , output the fullname, clear values
-// click fullname, show contact detail
-// click add address, show another city, state, street
 
 // business logic
 class Contact {
@@ -37,19 +34,19 @@ class Address {
 $().ready(function () {
 	$(".address-form").submit(function (e) {
 		e.preventDefault();
-		// debugger;
-
+		// $(".address-form").fadeIn('slow');
 		let firstname = $(".firstname").val();
 		let lastname = $(".lastname").val();
 		let contact = new Contact(firstname, lastname);
-		let newAddress = new Address();
+
 		$(".new-address").each(function () {
 			let street = $(this).find("input.street").val();
 			let city = $(this).find("input.city").val();
 			let state = $(this).find("input.state").val();
-			newAddress = new Address(street, city, state);
+			let newAddress = new Address(street, city, state);
 			contact.addresses.push(newAddress)
 		});
+
 		$(".fullname").append(`<p class='lead ${contact.fullName()}'><a href="#">Full Name: ${contact.fullName()} </a></p>`);
 		$(".fullname").click(function () {
 			$(".detail").show();
@@ -57,17 +54,24 @@ $().ready(function () {
 				$(".detail").append(`
 															<p class='lead'> First Name: ${contact.capitalize(contact.first)}</p>
 															<p class='lead'> Last Name: ${contact.capitalize(contact.last)}</p>
-															<p class='lead'>Address: ${newAddress.fullAddress()}</p>
+															<p class='lead'>Address: ${address.fullAddress()}</p>
 														`);
 			});
 		});
+
+		// remove extra addresses field
+		$(".new-address:gt(0)").remove();
+
+		// empty field
 		$("input").val("");
+
+		// reset current window when necessary
 		$("#reset").click(function () {
 			window.location.reload();
 		});
 	});
 
-	// add new address
+	// add new address field
 	$(".add-address").click(function () {
 		let newAddress = `
 		<div class='new-address'>
