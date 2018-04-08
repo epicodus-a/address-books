@@ -51,7 +51,6 @@ $().ready(function () {
 
 		$(".fullname").append(`<p class='lead ${contact.fullName()}'><a href="#">Full Name: ${contact.fullName()} </a></p>`);
 		$(".fullname").click(function () {
-			$(".detail").show();
 			contact.addresses.forEach(function (address) {
 				$(".detail").append(`
 															<p class='lead'> First Name: ${contact.capitalize(contact.first)}</p>
@@ -59,6 +58,9 @@ $().ready(function () {
 															<p class='lead'>Address  ${address.fullAddress()}</p>
 														`);
 			});
+			$(".detail").fadeIn('slow');
+			$(this).unbind();
+
 		});
 
 		// remove extra addresses field
