@@ -18,14 +18,15 @@ class Contact {
 
 
 class Address {
-	constructor(street='', city='', state='') {
+	constructor(addressType='', street='', city='', state='') {
+		this.addressType = addressType;
 		this.street = street;
 		this.city = city;
 		this.state = state;
 	}
 
 	fullAddress(){
-		return `${this.street}, ${this.city}, ${this.state}`;
+		return `${this.addressType}: ${this.street}, ${this.city}, ${this.state}`;
 	}
 }
 
@@ -40,10 +41,11 @@ $().ready(function () {
 		let contact = new Contact(firstname, lastname);
 
 		$(".new-address").each(function () {
+			let addressType = $(this).find("input.address-type").val();
 			let street = $(this).find("input.street").val();
 			let city = $(this).find("input.city").val();
 			let state = $(this).find("input.state").val();
-			let newAddress = new Address(street, city, state);
+			let newAddress = new Address(addressType, street, city, state);
 			contact.addresses.push(newAddress)
 		});
 
@@ -54,7 +56,7 @@ $().ready(function () {
 				$(".detail").append(`
 															<p class='lead'> First Name: ${contact.capitalize(contact.first)}</p>
 															<p class='lead'> Last Name: ${contact.capitalize(contact.last)}</p>
-															<p class='lead'>Address: ${address.fullAddress()}</p>
+															<p class='lead'>Address  ${address.fullAddress()}</p>
 														`);
 			});
 		});
@@ -75,6 +77,11 @@ $().ready(function () {
 	$(".add-address").click(function () {
 		let newAddress = `
 		<div class='new-address'>
+			<div class="col-12">
+				<div class="form-group">
+					<input type="text" class="form-control address-type" placeholder="address type" required>
+				</div>
+				</div>
 			<div class="col-12">
 				<div class="form-group">
 					<input type="text" class="form-control street" placeholder="street" required>
